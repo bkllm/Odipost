@@ -1,0 +1,19 @@
+# Node (React + Vue)
+node_modules/
+dist/
+.env
+
+# ASP.NET (Backend)
+bin/
+obj/
+appsettings.*.json
+*.user
+*.suo
+.vs/
+
+# Logs
+logs/
+*.log
+
+# Build / publish outputs
+publish/
