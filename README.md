@@ -1,10 +1,18 @@
-# 🧭 Odipost — Fleet & Logistics Dashboard
+# 📍 Odipost — Fleet & Logistics Dashboard
 
-Odipost is a fleet and logistics management application made of three main parts:
+Odipost is a fleet and logistics management application composed of three main parts:
 
-- 🚚 **Backend** (ASP.NET Core + EF Core + SQL Server)
-- 🎛 **Frontend React** (TypeScript)
-- 🎛 **Frontend Vue** (TypeScript)
+- 🧠 Backend (ASP.NET Core + EF Core + SQL Server)
+- 🖥️ Frontend React (TypeScript)
+- 🖥️ Frontend Vue (TypeScript)
+
+---
+
+🎓 This project was developed as part of my final year thesis at Odisee Hogeschool (Brussels),
+for the academic year 2024–2025. 
+
+👨‍💻 Author: Ayoub Bakalem  
+🌐 Live demo: https://odipost.ayoubbakalem.be
 
 ---
 
