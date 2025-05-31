@@ -1,5 +1,83 @@
-# Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Odipost – Frontend (Vue)
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+This folder contains the source code for the **Odipost** user interface, built with **Vue** and **TypeScript**.  
+The dashboard allows you to visualize the vehicle fleet and drivers in real time.
+
+---
+
+## 🚀 Tech Stack
+
+- **Vue** (Vite)
+- **TypeScript**
+- **Vuetify**
+- **Chart js** (data visualization)
+- **Vue Leaflet** (interactive map)
+- **Axios** (HTTP requests)
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+│
+├── api/             → Centralized API management
+├── assets/          → Icons, avatars, images
+├── components/      → Reusable UI elements (modals, tables, charts...)
+│   └── dashboard/   → KPI cards, Map, Alerts, Charts
+│
+├── models/          → Shared TypeScript types & interfaces
+├── views/           → Main pages: Dashboard, Vehicles, Drivers
+└── main.ts          → Entry point
+```
+
+---
+
+## 📦 Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start in development mode
+npm run dev
+```
+
+> App available at [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🔗 Key Dependencies
+
+| Package               | Purpose                            |
+|-----------------------|------------------------------------|
+| vue                   | Core UI framework                  |
+| vue-router            | Client-side routing                |
+| vuetify               | Design system & UI components      |
+| chart.js              | Data visualizations                |
+| leaflet               | Interactive maps                   |
+| @vue-leaflet          | Leaflet integration with Vue       |
+| axios                 | API request management             |
+
+
+---
+
+## 🌍 Environment Variables
+
+Create a `.env` file at the root with the following variables:
+
+```
+VITE_MAPBOX_TOKEN=pk.your-mapbox-token
+```
+
+---
+
+## 🧠 About
+
+This dashboard was designed to provide a **clean**, **modern**, and **efficient** user experience for fleet management.  
+It centralizes KPI tracking, vehicle and driver monitoring, live location mapping — all in a single, interactive interface.
+
+---
+
+> For backend setup or server logic, refer to the `../backend/` folder.
