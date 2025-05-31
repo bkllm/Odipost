@@ -43,14 +43,14 @@ Accessible at: `http://localhost:5257` (or defined in `launchSettings.json`)
 - `GET /api/incidents`
 - `GET /kpi/stats`
 
-📚 Swagger UI available at `/swagger` (in dev or forced in prod)
+📚 Swagger UI available at `/swagger` (in dev)
 
 ---
 
 ## 🔁 Seeding (initial data)
 
 The `DbSeeder` runs on startup inside `Program.cs`.  
-It populates the database with:
+It uses the **Bogus** library to generate realistic fake data and populates the database with:
 
 - 3500 drivers
 - 2000 vehicles
