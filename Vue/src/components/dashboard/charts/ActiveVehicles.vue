@@ -55,6 +55,7 @@
     PointElement,
     Filler,
     ChartOptions,
+    LineController
   } from 'chart.js'
 
   // ********** CHART REGISTRATION **********
@@ -63,6 +64,7 @@
     Tooltip,
     Legend,
     LineElement,
+    LineController,
     CategoryScale,
     LinearScale,
     PointElement,

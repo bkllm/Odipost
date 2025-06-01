@@ -1,7 +1,7 @@
 <template>
 
   <!-- ********************** FILTER BAR ********************** -->
-  <div class="d-flex align-center justify-space-between flex-wrap ga-4 mb-2">
+  <div class="d-flex align-center justify-space-between flex-wrap ga-4">
 
     <!-- ********** SEARCH ********** -->
     <v-text-field

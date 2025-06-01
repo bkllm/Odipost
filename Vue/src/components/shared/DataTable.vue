@@ -1,7 +1,7 @@
 <template>
 
   <!-- ******************** TABLE ******************** -->
-  <v-sheet elevation="4" class="pa-0 rounded-lg mb-10" style="height: 56vh; overflow-y: auto;">
+  <v-sheet elevation="4" class="pa-0 rounded-lg mb-5" style="height: 56vh; overflow-y: auto;">
     <v-table density="compact" fixed-header height="100%" :hover="true">
       
       <!-- ********** TABLE HEAD ********** -->
@@ -88,7 +88,7 @@
     />
 
     <!-- ********** ROWS ********** -->
-    <div style="position: absolute; right: 0;">
+    <div style="position: absolute; right: 0; margin-top: 12px;">
       <v-select
         v-model="localPageSize"
         label="Rows per page"
