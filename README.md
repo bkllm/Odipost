@@ -12,7 +12,8 @@ Odipost is a fleet and logistics management application composed of three main p
 for the academic year 2024–2025. 
 
 👨‍💻 Author: Ayoub Bakalem  
-🌐 Live demo: https://odipost.ayoubbakalem.be
+🌐 Live demo (React): https://odipost.ayoubbakalem.be  
+🌐 Live demo (Vue): https://vue.odipost.ayoubbakalem.be
 
 ---
 
