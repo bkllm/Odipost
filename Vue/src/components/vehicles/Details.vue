@@ -160,20 +160,17 @@
     fetchLocation()
     intervalId = setInterval(fetchLocation, 3000)
 
-    nextTick(() => {
-      setTimeout(() => {
-        const map = leafletMapRef.value?.leafletObject as L.Map
-        map?.invalidateSize()
+    const map = leafletMapRef.value?.leafletObject as L.Map
+    map?.invalidateSize()
 
-        // End performance measurement for map load
-        performance.mark('map-end')
-        performance.measure('map-duration', 'map-start', 'map-end')
+    // End performance measurement for map load
+    performance.mark('map-end')
+    performance.measure('map-duration', 'map-start', 'map-end')
 
-        const entries = performance.getEntriesByName('map-duration')
-        const duration = entries[entries.length - 1]?.duration.toFixed(2)
-        console.log(`🗺️ Map load duration: ${duration} ms`)
-      }, 300)
-    })
+    const entries = performance.getEntriesByName('map-duration')
+    const duration = entries[entries.length - 1]?.duration.toFixed(2)
+    console.log(`🗺️ Map load duration: ${duration} ms`)
+    
   })
 
   onBeforeUnmount(() => {
