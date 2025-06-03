@@ -100,10 +100,20 @@ const DriversPage = () => {
 
   // Fetch vehicles
   useEffect(() => {
+    // START measuring as soon as a new fetch is triggered
+    performance.mark('filter-start')
+
     apiManager.drivers.getAll(page, pageSize, debouncedSearchTerm, filters.status)
     .then((res) => {
       setDrivers(res.data)      
       setTotalPages(res.totalPages)
+
+      // END measuring once data has been received and state is updated
+      performance.mark('filter-end')
+      performance.measure('Filtertijd', 'filter-start', 'filter-end')
+      const entries   = performance.getEntriesByName('Filtertijd')
+      const duration  = entries[entries.length - 1]?.duration.toFixed(2)
+      console.log(`🟢 Filtertijd: ${duration} ms`)
     })
     .catch(console.error)
   }, [page, pageSize, debouncedSearchTerm, filters.status])

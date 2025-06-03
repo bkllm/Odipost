@@ -171,6 +171,9 @@ const VehiclesPage = () => {
           setPage(1)
         }}
         onRowClick={(vehicle) => {
+          // Start performance measurement when user opens modal
+          performance.mark('map-start')
+
           setVehicle(vehicle)
           setModalOpen(true)
         }}

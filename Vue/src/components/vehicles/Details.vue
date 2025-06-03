@@ -49,7 +49,7 @@
 
       <h3 class="text-h6 font-weight-bold mb-3">Location</h3>
 
-      <div v-if="isMapVisible" style="width: 100%; height: 500px; border-radius: 8px; overflow: hidden;">
+      <div style="width: 100%; height: 500px; border-radius: 8px; overflow: hidden;">
 
         <LMap
           :center="mapCenter as [number, number]"
@@ -97,6 +97,7 @@
 
 
   // ********** COMPONENTS **********
+  import 'leaflet/dist/leaflet.css'
   import { 
     LMap, 
     LTileLayer, 
@@ -115,7 +116,6 @@
   const tileUrl                         = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`
   const attribution                     = '© <a href="https://www.mapbox.com/">Mapbox</a>'
   const leafletMapRef                   = ref<InstanceType<typeof LMap> | null>(null)
-  const isMapVisible                    = ref(false);
   const mapCenter                       = computed(() =>
     location.value ? [location.value.latitude, location.value.longitude] : defaultCenter
   )
@@ -157,9 +157,6 @@
   
   // ********** HOOKS **********
   onMounted(() => {
-    setTimeout(() => {
-      isMapVisible.value = true
-    }, 300)
     fetchLocation()
     intervalId = setInterval(fetchLocation, 3000)
 
@@ -167,6 +164,14 @@
       setTimeout(() => {
         const map = leafletMapRef.value?.leafletObject as L.Map
         map?.invalidateSize()
+
+        // End performance measurement for map load
+        performance.mark('map-end')
+        performance.measure('map-duration', 'map-start', 'map-end')
+
+        const entries = performance.getEntriesByName('map-duration')
+        const duration = entries[entries.length - 1]?.duration.toFixed(2)
+        console.log(`🗺️ Map load duration: ${duration} ms`)
       }, 300)
     })
   })

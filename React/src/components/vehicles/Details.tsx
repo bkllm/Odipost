@@ -69,6 +69,17 @@ const VehicleDetails = ({ vehicle }: Props) => {
 
   // ********** EFFECTS **********
   useEffect(() => {
+    // END measurement when map is loaded
+    performance.mark('map-end')
+    performance.measure('map-duration', 'map-start', 'map-end')
+
+    const entries = performance.getEntriesByName('map-duration')
+    const duration = entries[entries.length - 1]?.duration.toFixed(2)
+    console.log(`🗺️ Map load duration: ${duration} ms`)
+
+  }, [])
+
+  useEffect(() => {
     const fetchLocation = () => {
       apiManager.location.getVehicleById(vehicle.id)
       .then((res) => setLocation(res.data))

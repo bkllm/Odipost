@@ -134,6 +134,9 @@
   }
 
   const onRowClick = (vehicle: Vehicle) => {
+    // Start performance measurement for map load
+    performance.mark('map-start')
+
     selectedVehicle.value = vehicle
     modalOpen.value = true
   }

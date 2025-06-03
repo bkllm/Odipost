@@ -146,8 +146,13 @@
     modalOpen.value = true
   }
 
+  const triggerFetch = (action: 'filter' | 'search' | 'paginate') => {
+    performance.mark(`${action}-start`)
+    fetchDrivers(action)
+  }
+
   // Fetch
-  const fetchDrivers = () => {
+  const fetchDrivers = (action?: string) => {
     API.drivers.getAll(
       page.value,
       pageSize.value,
@@ -157,6 +162,15 @@
     .then((res) => {
       drivers.value = res.data
       totalPages.value = res.totalPages
+      
+      // MEASURE
+      if (action) {
+        performance.mark(`${action}-end`)
+        performance.measure(`${action}-duration`, `${action}-start`, `${action}-end`)
+        const entries   = performance.getEntriesByName(`${action}-duration`)
+        const duration  = entries[entries.length - 1]?.duration.toFixed(2)
+        console.log(`⏱️ ${action} duration: ${duration} ms`)
+      }
     })
     .catch(console.error)
   }
@@ -179,11 +193,14 @@
     clearTimeout(debounceTimer)
     debounceTimer = setTimeout(() => {
       debouncedSearchTerm.value = val
-      fetchDrivers();
+      page.value = 1
+      triggerFetch('search')
     }, 300)
   })
 
-  watch([page, pageSize], fetchDrivers)
+  watch([page, pageSize], () => {
+    triggerFetch('paginate')
+  })
 
   watch(
     () => [filters.value.status],
@@ -191,7 +208,7 @@
       if (page.value !== 1) {
         page.value = 1
       } else {
-        fetchDrivers()
+        triggerFetch('filter')
       }
     }
   )
